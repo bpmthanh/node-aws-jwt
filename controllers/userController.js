@@ -9,7 +9,7 @@ const registerUser = async (req, res, next) => {
       errMessage: "Lack of parameter!",
     });
   } else {
-    const userAvailable = await userModel.findOne({ email });
+    const userAvailable = await  userModel.findOne({ email });
     if (userAvailable) {
       res.status(400).json({ errMessage: "User has already registered!" });
     } else {
