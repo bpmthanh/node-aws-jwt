@@ -1,4 +1,5 @@
-const initWebRoutes = require("./routes/web");
+const contactRoutes = require("./routes/contactRoutes");
+const userRoutes = require("./routes/userRoutes");
 const express = require("express");
 const connectDB = require("./config/dbConnection");
 const bodyParser = require("body-parser");
@@ -12,7 +13,8 @@ app.use(bodyParser.json());
 
 connectDB();
 
-initWebRoutes(app);
+contactRoutes(app);
+userRoutes(app);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
