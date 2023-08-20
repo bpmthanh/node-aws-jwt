@@ -6,7 +6,7 @@ const getAllContacts = async (req, res, next) => {
 };
 
 const getContactById = async (req, res, next) => {
-  const contact = await ContactModel.findById(req.query.id);
+  const contact = await ContactModel.find({ user_id: req.user.id });
   if (!contact) {
     return res.status(400).json("contact not found");
   }
@@ -33,9 +33,7 @@ const deleteContact = async (req, res, next) => {
   if (!contact) {
     return res.status(400).json("contact not found");
   }
-  const deleteContact = await ContactModel.findByIdAndDelete(
-    req.query.id,
-  );
+  const deleteContact = await ContactModel.findByIdAndDelete(req.query.id);
   return res.status(200).json(deleteContact);
 };
 
